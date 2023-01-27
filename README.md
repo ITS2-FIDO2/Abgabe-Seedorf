@@ -10,4 +10,4 @@ The Documentation Markdown file is automatically converted to a PDF using [Eisvo
 ## Code
 The code is in the `Code` directory sorted by Assignment Sheet and Task.
 
-You need to clone the [RIOT-OS GitHub repo](https://github.com/RIOT-OS/RIOT)
+You need to clone the [RIOT-OS GitHub repo](https://github.com/RIOT-OS/RIOT) to a adjacent directory to this.
