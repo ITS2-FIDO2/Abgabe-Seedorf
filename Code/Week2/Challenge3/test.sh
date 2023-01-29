@@ -1,0 +1,1 @@
+echo "encrypt 0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF0123456789ABCDEF" | ./bin/native/example_aes_cbc_cmd.elf
