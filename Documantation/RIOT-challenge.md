@@ -68,3 +68,18 @@ Der Befehl beinhaltet:
 2. Die Hardware Adresse des Ziels 
 3. Die Nachricht
 
+
+# Woche 2
+
+## Challenge 1
+Lorem Ipsum
+
+## Challenge 2
+Lorem Ipsum
+
+## Challenge 3
+
+### Review AES-CBC
+Im AES-CBC
+
+![AES CBC Mode](./images/2_3_1-AES_CBC_encryption.svg)
