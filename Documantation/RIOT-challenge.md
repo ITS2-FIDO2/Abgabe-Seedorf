@@ -67,7 +67,6 @@ Der Befehl beinhaltet:
 2. Die Hardware Adresse des Ziels 
 3. Die Nachricht
 
----
 
 # Woche 2
 
@@ -170,3 +169,18 @@ Entsprechend werden folgende Zeilen des CBC-Codes für die main abgeändert:
     od_hex_dump(input, total_len, AES_BLOCK_SIZE);
     printf("\n\n");
     ```
+
+
+## Challenge 4
+
+### 4.2.: Understanding existing benchmarking code
+
+Die Funktion "executeAesCbc()" in  aes-cbc.c nimmt drei Parameter entgegen: numberOfRounds, keySize und messageLength. Sie führt dann AES-CBC für die angegebene Anzahl von Runden wie folgt aus:
+
+- Jede Runde generiert die Funktion eine zufällige Plaintext-Nachricht. Dann erzeugt sie einen zufälligen Initialisierungsvektor (IV). Danach wird das AES-Chiffrierobjekt mit einem zufällig erzeugten Chiffrierschlüssel initialisiert.
+- Der Verschlüsselungsprozess wird mit der Funktion cipher_encrypt_cbc durchgeführt, die den IV, den Plaintext und den outputBuffer als Eingabe erhält.
+- Der Entschlüsselungsprozess wird mit cipher_decrypt_cbc durchgeführ und erhällt wie eben IV, Output der encrypt-Funktion und den decryptBuffer
+- Zum Ende werden jeweils die Rundenzeiten für encrypt und decrypt ausgegeben.
+
+Die Funktion "executeAesEcb()" in aes-ecb.c ist gleich aufgebaut, wie die obere:
+Beide Funktionen erzeugen zufällige Eingabedaten und Verschlüsselungsschlüssel und führen die Ver- und Entschlüsselung durch, wobei der einzige Unterschied in der Art des verwendeten Algorithmus besteht (CBC vs. ECB).
