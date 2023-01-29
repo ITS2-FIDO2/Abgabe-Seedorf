@@ -276,3 +276,5 @@ Genau wie in challenge 3 wurde der AES-CBC Algorithmus des Basisprojekts benutzt
 In der main werden dann alle drei Algorithmen nacheinander aufgerufen, um im nächsten Schritt Performance-Tests machen zu können.
 
 Mithilfe eines Python Scriptes wurde aus den Ergebnissen des Benchmarking codes für jede Messreihe der Durchnitt und die Standartabweichung für ver- und entschlüsselung berechnet:
+
+![AES CTR Mode](./images/2_4_3_benchmark-auswertung.png)
