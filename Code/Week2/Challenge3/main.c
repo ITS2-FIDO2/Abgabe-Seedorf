@@ -3,17 +3,19 @@
 #include <stdbool.h>
 
 #include "shell.h"
-//#include "shell_commands.h"
+// #include "shell_commands.h"
 #include "od.h"
 #include "random.h"
 
-#include "crypto/modes/cbc.h"
+// #include "crypto/modes/cbc.h"
 #include "crypto/ciphers.h"
 #include "crypto/aes.h"
 
+#include "crypto/modes/ctr.h"
+
 static cipher_t cipher;
 
-uint8_t *decrypt(uint8_t *buffer, uint8_t iv[16], size_t size)
+uint8_t *decrypt(uint8_t *buffer, uint8_t counter_block[16], size_t size)
 {
     if (!buffer || size <= 0 || size % AES_BLOCK_SIZE)
     {
@@ -24,7 +26,7 @@ uint8_t *decrypt(uint8_t *buffer, uint8_t iv[16], size_t size)
     uint8_t *output = malloc(size);
 
     // Verschlüsseln
-    int err = cipher_decrypt_cbc(&cipher, iv, buffer, size, output);
+    int err = cipher_decrypt_cbc(&cipher, counter_block, buffer, size, output);
 
     if (err < 0)
     {
@@ -35,7 +37,7 @@ uint8_t *decrypt(uint8_t *buffer, uint8_t iv[16], size_t size)
     return output;
 }
 
-uint8_t *encrypt(void *buffer, size_t size, uint8_t iv[16], size_t *size_out)
+uint8_t *encrypt(void *buffer, size_t size, uint8_t counter_block[16], size_t *size_out)
 {
     if (!buffer || !size_out)
     {
@@ -60,11 +62,20 @@ uint8_t *encrypt(void *buffer, size_t size, uint8_t iv[16], size_t *size_out)
     // Alloziere Speicher für die Ausgabe
     uint8_t *output = malloc(*size_out);
 
-    // IV generieren
-    random_bytes(iv, 16); // In Produktionsumgebungen eine Kryptographisch sichere Random Funktion verwenden!!!
+    // Counter_block generieren
+
+    uint8_t nonce[8] = {0};
+    random_bytes(nonce, 8); // IMPORTANT: In productive environment, use a cryptographically secure RNG!
+
+    uint8_t counter[8] = 1; // IMPORTANT: In productive environment, use a cryptographically secure RNG!
+
+    // Concat
+    uint8_t *counter_block[16] = {0};
+    memcpy(counter_block, nonce, 8);
+    memcpy(counter_block + 8, counter, 8);
 
     // Verschlüsseln
-    int err = cipher_encrypt_cbc(&cipher, iv, input, *size_out, output);
+    int err = cipher_encrypt_ctr(&cipher, counter_block, input, *size_out, output);
 
     if (err < 0)
     {
@@ -76,9 +87,9 @@ uint8_t *encrypt(void *buffer, size_t size, uint8_t iv[16], size_t *size_out)
     return output;
 }
 
-uint8_t *encrypt_string(char *string, uint8_t iv[16], size_t *size_out)
+uint8_t *encrypt_string(char *string, uint8_t counter_block[16], size_t *size_out)
 {
-    return encrypt((void *)string, strlen(string) + 1, iv, size_out);
+    return encrypt((void *)string, strlen(string) + 1, counter_block, size_out);
 }
 
 int encrypt_command_handler(int argc, char **argv)
@@ -90,13 +101,13 @@ int encrypt_command_handler(int argc, char **argv)
     }
 
     size_t size;
-    uint8_t iv[16];
+    uint8_t counter_block[16];
 
-    uint8_t *encrypted = encrypt_string(argv[1], iv, &size);
-    uint8_t *decrypted = decrypt(encrypted, iv, size);
+    uint8_t *encrypted = encrypt_string(argv[1], counter_block, &size);
+    uint8_t *decrypted = decrypt(encrypted, counter_block, size);
 
     printf("IV: ");
-    od_hex_dump_ext(iv, 16, 0, 0);
+    od_hex_dump_ext(counter_block, 16, 0, 0);
     printf("\n");
 
     od_hex_dump_ext(argv[1], strlen(argv[1]) + 1, AES_BLOCK_SIZE, 0);
@@ -127,6 +138,7 @@ int main(void)
         exit(err);
     }
 
+    // Aufruf der encryption
     shell_command_t commands[] = {
         {"encrypt", "encrypt a message", encrypt_command_handler},
         {NULL, NULL, NULL}};

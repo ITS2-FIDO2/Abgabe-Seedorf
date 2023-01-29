@@ -1,5 +1,5 @@
 # name of your application
-APPLICATION = example_aes_cbc_cmd
+APPLICATION = example_aes_ctr_cmd
 
 # If no BOARD is found in the environment, use this default:
 BOARD ?= native
