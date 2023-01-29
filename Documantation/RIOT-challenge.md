@@ -274,3 +274,5 @@ Beide Funktionen erzeugen zufällige Eingabedaten und Verschlüsselungsschlüsse
 Genau wie in challenge 3 wurde der AES-CBC Algorithmus des Basisprojekts benutzt und an wenigen Zeilen zu CTR umgeändert. Dafür wurde in `/algorithm` die aes-cbc.h und aes-cbc.c kopiert und zu aes-ctr umbenannt. Im code wird dann die ctr encrypt und decrypt Methode aufgerufen und anstatt der zufällig generierten `IV[16]`, der zufällig generierte `block_counter[16], 8` übergeben, sodass wieder die ersten 8 bytes die Nunce und die restlichen 8 bytes der Counter sind.
 
 In der main werden dann alle drei Algorithmen nacheinander aufgerufen, um im nächsten Schritt Performance-Tests machen zu können.
+
+Mithilfe eines Python Scriptes wurde aus den Ergebnissen des Benchmarking codes für jede Messreihe der Durchnitt und die Standartabweichung für ver- und entschlüsselung berechnet:
