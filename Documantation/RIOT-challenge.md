@@ -191,10 +191,10 @@ Der Counterblock wird unter Verwendung des Keys mit einer AES encryption functio
 Für die Implementierung werden die Header Dateien mit den cipher_encrypt_ctr und cipher_decrypt_ctr hinzugefügt:
 ```
 encrypt ctr
-int cipher_encrypt_ctr(const cipher_t *cipher, uint8_t counter_block[16], const uint8_t *input, size_t input_len, uint8_t *output);
+int cipher_encrypt_ctr(const cipher_t *cipher, uint8_t counter_block, 8, const uint8_t *input, size_t input_len, uint8_t *output);
 
 //decrypt ctr
-int cipher_decrypt_ctr(const cipher_t *cipher, uint8_t counter_block, const uint8_t *input, size_t input_len, uint8_t *output);
+int cipher_decrypt_ctr(const cipher_t *cipher, uint8_t counter_block, 8, const uint8_t *input, size_t input_len, uint8_t *output);
 ```
 
 Entsprechend werden folgende Zeilen des CBC-Codes für die main abgeändert:
@@ -226,12 +226,12 @@ Entsprechend werden folgende Zeilen des CBC-Codes für die main abgeändert:
     ```
     /* ======== Encryption and Decryption ======== */
 
-    if ((err = cipher_encrypt_ctr(&cipher, counter_block, input, total_len, output)) < 0) {
+    if ((err = cipher_encrypt_ctr(&cipher, counter_block, 8, input, total_len, output)) < 0) {
         printf("Failed to encrypt data: %d\n", err);
         return err;
     }
 
-        if ((err = cipher_decrypt_ctr(&cipher, counter_block, output, total_len, decrypted)) < 0) {
+        if ((err = cipher_decrypt_ctr(&cipher, counter_block, 8, output, total_len, decrypted)) < 0) {
         printf("Failed to decrypt data: %d\n", err);
         return err;
     }
