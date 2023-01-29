@@ -119,7 +119,7 @@ Dafür definieren wir die folgenden Begriffe:
 
 Der Counter Block ist wie die IV aus dem AES-CBC 16 byte groß, also 128 bit. Dieser muss in zwei Teile geteilt werden für die Nonce + Counter. Auf den initialen Counter wird eine Inkrementierungsmethode angewandt, diese ist standardmäsig: (Counter+1 mod 2^Counter_Block_length). In NIST-SP800-38A Appendix B.2 ist eine der  Herangehensweisen zur Initialisierung des Counter Blocks, dass die Nonce und der Counter genau die Hälfte des Counter Blocks einnehmen. Deswegen wählen wir eine 64 bit Nonce und einen 64 bit Counter. Diese werden wie in der Review des AES-CBC mit einer random number initialisiert, wobei in der Praxis ein kryptographisch sicherer Random Number Generator benutzt werden sollte.
 
-Der Counterblock und der Key werden unter Verwendung einer AES encryption function benutzt, um einen Keystream zu erzeugen, der dann mit dem Plaintext XOR-verknüpft wird, um den Ciphertext zu erzeugen. Also anders wie im CBC Mode, wo erst eine XOR-Verknüpfung des Plaintext mit der IV und anschließend eine Verschlüsselung stattfindet, wird bei CTR der Counter Block verschlüsselt und anschließend eine XOR-Verknüfung mit dem Plaintext durchgeführt.
+Der Counterblock wird unter Verwendung des Keys mit einer AES encryption function verschlüsselt, um einen Keystream zu erzeugen, der dann mit dem Plaintext XOR-verknüpft wird, um den Ciphertext zu erzeugen. Also anders wie im CBC Mode, wo erst eine XOR-Verknüpfung des Plaintext mit der IV und anschließend eine Verschlüsselung stattfindet, wird bei CTR der Counter Block verschlüsselt und anschließend eine XOR-Verknüfung mit dem Plaintext durchgeführt.
 
 Für die Implementierung werden die Header Dateien mit den cipher_encrypt_ctr und cipher_decrypt_ctr hinzugefügt:
 ```
