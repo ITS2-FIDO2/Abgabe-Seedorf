@@ -258,7 +258,7 @@ Entsprechend werden folgende Zeilen des CBC-Codes für die main abgeändert:
 
 ## Challenge 4
 
-### 4.2.: Understanding existing benchmarking code
+### 4.2. Understanding existing benchmarking code
 
 Die Funktion "executeAesCbc()" in  aes-cbc.c nimmt drei Parameter entgegen: numberOfRounds, keySize und messageLength. Sie führt dann AES-CBC für die angegebene Anzahl von Runden wie folgt aus:
 
@@ -269,3 +269,8 @@ Die Funktion "executeAesCbc()" in  aes-cbc.c nimmt drei Parameter entgegen: numb
 
 Die Funktion "executeAesEcb()" in aes-ecb.c ist gleich aufgebaut, wie die obere:
 Beide Funktionen erzeugen zufällige Eingabedaten und Verschlüsselungsschlüssel und führen die Ver- und Entschlüsselung durch, wobei der einzige Unterschied in der Art des verwendeten Algorithmus besteht (CBC vs. ECB).
+
+### 4.3 Enhance exisrting benchmark code with AES-CTR
+Genau wie in challenge 3 wurde der AES-CBC Algorithmus des Basisprojekts benutzt und an wenigen Zeilen zu CTR umgeändert. Dafür wurde in `/algorithm` die aes-cbc.h und aes-cbc.c kopiert und zu aes-ctr umbenannt. Im code wird dann die ctr encrypt und decrypt Methode aufgerufen und anstatt der zufällig generierten `IV[16]`, der zufällig generierte `block_counter[16], 8` übergeben wird, sodass wieder die ersten 8 bytes die Nunce und die restlichen 8 bytes der Counter sind.
+
+In der main werden dann alle drei Algorithmen nacheinander aufgerufen, um im nächsten Schritt Performance-Tests machen zu können.
