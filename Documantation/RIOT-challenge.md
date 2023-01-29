@@ -72,7 +72,10 @@ Der Befehl beinhaltet:
 # Woche 2
 
 ## Challenge 1
-Lorem Ipsum
+Das Ziel ist die ersten vier Tutorials von RIOT durchzuarbeiten
+
+### Task 01
+Einfügen der Code-Zeile `printf("This application runs on %s\n", RIOT_BOARD);` gibt den Hardware Typ aud für den RIOT Kompiliert wurde.
 
 ## Challenge 2
 Lorem Ipsum
