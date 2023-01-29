@@ -157,7 +157,7 @@ void *system_time(void *arg)
 ```
 
 ## Challenge 2
-Lorem Ipsum
+In Chapter_2_Crypto wurden die beiden AES modes ECB und CBC erfolgreich kompiliert und eine Test message verschlüsselt und entschlüsselt. Dafür wurde der BASE_PFAD im Makefile angepasst und in der main() je der CIPHER_AES_128 zu CIPHER_AES geändert und den `include shell_commands` entfernt, da sie deprecated sind.
 
 ## Challenge 3
 
@@ -191,10 +191,10 @@ Der Counterblock wird unter Verwendung des Keys mit einer AES encryption functio
 Für die Implementierung werden die Header Dateien mit den cipher_encrypt_ctr und cipher_decrypt_ctr hinzugefügt:
 ```
 encrypt ctr
-int cipher_encrypt_ctr(const cipher_t *cipher, uint8_t counter_block[16], const uint8_t *input, size_t input_len, uint8_t *output);
+int cipher_encrypt_ctr(const cipher_t *cipher, uint8_t counter_block, 8, const uint8_t *input, size_t input_len, uint8_t *output);
 
 //decrypt ctr
-int cipher_decrypt_ctr(const cipher_t *cipher, uint8_t counter_block, const uint8_t *input, size_t input_len, uint8_t *output);
+int cipher_decrypt_ctr(const cipher_t *cipher, uint8_t counter_block, 8, const uint8_t *input, size_t input_len, uint8_t *output);
 ```
 
 Entsprechend werden folgende Zeilen des CBC-Codes für die main abgeändert:
@@ -226,12 +226,12 @@ Entsprechend werden folgende Zeilen des CBC-Codes für die main abgeändert:
     ```
     /* ======== Encryption and Decryption ======== */
 
-    if ((err = cipher_encrypt_ctr(&cipher, counter_block, input, total_len, output)) < 0) {
+    if ((err = cipher_encrypt_ctr(&cipher, counter_block, 8, input, total_len, output)) < 0) {
         printf("Failed to encrypt data: %d\n", err);
         return err;
     }
 
-        if ((err = cipher_decrypt_ctr(&cipher, counter_block, output, total_len, decrypted)) < 0) {
+        if ((err = cipher_decrypt_ctr(&cipher, counter_block, 8, output, total_len, decrypted)) < 0) {
         printf("Failed to decrypt data: %d\n", err);
         return err;
     }
@@ -258,7 +258,7 @@ Entsprechend werden folgende Zeilen des CBC-Codes für die main abgeändert:
 
 ## Challenge 4
 
-### 4.2.: Understanding existing benchmarking code
+### 4.2. Understanding existing benchmarking code
 
 Die Funktion "executeAesCbc()" in  aes-cbc.c nimmt drei Parameter entgegen: numberOfRounds, keySize und messageLength. Sie führt dann AES-CBC für die angegebene Anzahl von Runden wie folgt aus:
 
@@ -269,3 +269,8 @@ Die Funktion "executeAesCbc()" in  aes-cbc.c nimmt drei Parameter entgegen: numb
 
 Die Funktion "executeAesEcb()" in aes-ecb.c ist gleich aufgebaut, wie die obere:
 Beide Funktionen erzeugen zufällige Eingabedaten und Verschlüsselungsschlüssel und führen die Ver- und Entschlüsselung durch, wobei der einzige Unterschied in der Art des verwendeten Algorithmus besteht (CBC vs. ECB).
+
+### 4.3 Enhance existing benchmark code with AES-CTR
+Genau wie in challenge 3 wurde der AES-CBC Algorithmus des Basisprojekts benutzt und an wenigen Zeilen zu CTR umgeändert. Dafür wurde in `/algorithm` die aes-cbc.h und aes-cbc.c kopiert und zu aes-ctr umbenannt. Im code wird dann die ctr encrypt und decrypt Methode aufgerufen und anstatt der zufällig generierten `IV[16]`, der zufällig generierte `block_counter[16], 8` übergeben, sodass wieder die ersten 8 bytes die Nunce und die restlichen 8 bytes der Counter sind.
+
+In der main werden dann alle drei Algorithmen nacheinander aufgerufen, um im nächsten Schritt Performance-Tests machen zu können.
