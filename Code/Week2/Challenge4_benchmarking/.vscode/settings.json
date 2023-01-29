@@ -1,0 +1,15 @@
+{
+    "files.associations": {
+        "string.h": "c",
+        "stdio.h": "c",
+        "ctype.h": "c",
+        "aes.h": "c",
+        "stdint.h": "c",
+        "aes-ecb.h": "c",
+        "ciphers.h": "c",
+        "od.h": "c",
+        "relic.h": "c",
+        "relic_core.h": "c",
+        "stdlib.h": "c"
+    }
+}
