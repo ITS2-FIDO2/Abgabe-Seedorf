@@ -52,3 +52,19 @@ In der RIOT Shell kann nun der Befehl `whats_up` ausgeführt werden.
 
 ### Simple Network communication
 
+Das Ziel dieser Challenge war, zwei RIOT-OS Instanzen über Netzwerk kommunizieren zu lassen.
+
+Das im RIOT Repo mitgelieferte Script `tapsetup` kann genutzt werden um in der Linux Umgebung zwei interfaces (tap0 und tap1) anzulegen.
+
+![Zwei virtuelle Interfaces mit verbindender "bridge"](./images/1_2_4-tapsetup.png)
+
+Wird nun eine RIOT-OS Instanz mit dem Zusatz `PORT=tap0` ist das INterface tap0 Verbunden und kann intern mit dem Befehl `ifconfig` gefunden werden. Neben dem Interface wird die Hardware-Adresse auf der das Interface später angesprochen werden kann angezeigt.
+
+![tap1 in RIOT-OS](./images/1_2_4-connecttotap.png)
+
+Nun kann mit Hilfe des Befehls `txtsnd 4 32:7E:98:37:38:94 hello` eine Nachricht an ein anderes Interface gesendet werden.
+Der Befehl beinhaltet:
+1. Die Interface Nummer auf der gesendet werden soll
+2. Die Hardware Adresse des Ziels 
+3. Die Nachricht
+
