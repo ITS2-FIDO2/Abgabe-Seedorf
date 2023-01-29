@@ -22,18 +22,33 @@ Das VM setup wird hier nicht genauer beschrieben.
 
 ## Challenge 2: Erste schritte mit RIOT
 
-Die Anleitung zum setup von RIOT OS aus den RIOT Tutorials wurde durchlaufen und ein funktionierender Workspace erstellt.
+Die Anleitung zum Setup von RIOT OS aus den RIOT Tutorials wurde durchlaufen und ein funktionierender Workspace erstellt.
 
-Wir haben das setup Insofern verändert, dass unsere Änderungen in einem separaten Ordner neben dem von GitHub geklonten RIOT Dateien stattfanden.
+Wir haben das Setup insofern verändert, dass unser Code in einem separaten Ordner neben dem von GitHub geklonten RIOT Dateien liegt.
 
 ### First_test Application
 
 Das Ziel ist ein erstes RIOT-OS selber zu kompilieren, mit einer eigen Funktion zu versehen und zu starten.
 
-Im default Makefile mussten zwei Änderungen vorgenommen werden:
+Im default Makefile müssen zwei Änderungen vorgenommen werden:
 1. In der Variable `APPLICATION` der Name der Ausführbaren binary zu setzen
 2. Die `RIOTBASE`, dem Pfad zu den Hauptdateien des RIOT-OS, zu setzen.
 
-![](./images/1_2_3-Makefile.png)
+![Einfaches Makefile](./images/1_2_3-Makefile.png)
 
+Es soll eine shell command geschrieben werden der bei Aufruf einen String aufgibt.
+Zugrunde liegt eine einfache C Funktion mit einem `printf()` statement:
+
+![Funktion Whats_up](./images/1_2_3-whatsup.png)
+
+Des weiteren muss die Funktion in einem Array eingetragen und dieses Array als Quelle für Shell-befehle in der `main` Funktion registriert werden.
+
+![Shell Kommando Registeriren](./images/1_2_3-register.png)
+
+Nun kann mithilfe des `make`-Kommandos ein build gestartet werden und die resultierende Binary mit dem Namen **First_test.elf** ausgeführt werden.
+In der RIOT Shell kann nun der Befehl `whats_up` ausgeführt werden.
+
+![whats_up Befehl in RIOT shell](./images/1_2_3-function.png)
+
+### Simple Network communication
 

@@ -37,7 +37,7 @@ static int whats_up(int argc, char **argv) {
     (void)argc;
     (void)argv;
 
-    printf("the roof!\n");
+    printf("The roof!\n");
     return 0;
 }
 
