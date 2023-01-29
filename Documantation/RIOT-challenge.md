@@ -88,6 +88,9 @@ Die Funktion `echo()` aus dem Tutorial Code muss um die Zeile ` printf("%s", arg
 
 ![Ausgabe des Ersten Arguments](./images/2_1_1-echo.png)
 
+### Task 03
+
+
 ## Challenge 2
 
 ## Challenge 3
