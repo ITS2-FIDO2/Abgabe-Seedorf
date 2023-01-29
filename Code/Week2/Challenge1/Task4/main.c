@@ -27,16 +27,6 @@
 char stack[THREAD_STACKSIZE_MAIN];
 
 
-// Überbleibsel von Task 03
-void *thread_handler(void *arg)
-{
-    
-    (void) arg;
-    puts("I'm in \"thread\" now");
-    return NULL;
-}
-
-
 // System time Ausgabe alle 2 Sekunden in microsekunden
 void *system_time(void *arg)
 {
@@ -51,16 +41,7 @@ void *system_time(void *arg)
     return NULL;
 }
 
-static int whats_up(int argc, char **argv) {
-    (void)argc;
-    (void)argv;
-
-    printf("The roof!\n");
-    return 0;
-}
-
 const shell_command_t shell_commands[] = {
-    {"whats_up", "prints the roof", whats_up},
     { NULL, NULL, NULL}
 };
 
@@ -74,13 +55,6 @@ int main(void)
 
 
 puts("This is Task-04");
-
-    // Thread Creation vom Task03
-    thread_create(stack, sizeof(stack),
-                  THREAD_PRIORITY_MAIN - 1,
-                  THREAD_CREATE_STACKTEST,
-                  thread_handler, NULL,
-                  "thread");
 
     //Task04 Thread Creation für die System Time 
     thread_create(stack, sizeof(stack),

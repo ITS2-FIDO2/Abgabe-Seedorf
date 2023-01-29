@@ -1,7 +1,7 @@
 ---
 title: "Aktuelle Themen der IT-Sicherheit: RIOT Challenges"
 subtitle: "WS 22/23: Prof. Dr. Jan Seedorf"  
-author: [Thomas Jakkel (Mat. Nr), Severin Nonenmann (Mat. Nr), Lukas Reinke (1001213) (Mat. Nr), Lars Weiß (Mat. Nr)]
+author: [Thomas Jakkel (1001594), Severin Nonenmann (1001599), Lukas Reinke (1001213) , Lars Weiß (1001596)]
 date: "29. Januar 2023"
 keywords: [Markdown, Example]
 lang: "de"
@@ -31,26 +31,53 @@ Wir haben das Setup insofern verändert, dass unser Code in einem separaten Ordn
 Das Ziel ist ein erstes RIOT-OS selber zu kompilieren, mit einer eigen Funktion zu versehen und zu starten.
 
 Im default Makefile müssen zwei Änderungen vorgenommen werden:
+
 1. In der Variable `APPLICATION` der Name der Ausführbaren binary zu setzen
+
 2. Die `RIOTBASE`, dem Pfad zu den Hauptdateien des RIOT-OS, zu setzen.
 
-![Einfaches Makefile](./images/1_2_3-Makefile.png)
+```
+...
+APPLICATION = First_test
 
-Es soll eine shell command geschrieben werden der bei Aufruf einen String aufgibt.
+BOARD ?= native
+
+RIOTBASE ?= $(CURDIR)/../../../RIOT/
+...
+```
+
+Es soll eine Shell Kommando geschrieben werden das bei Aufruf einen String zurück gibt.
 Zugrunde liegt eine einfache C Funktion mit einem `printf()` statement:
 
-![Funktion Whats_up](./images/1_2_3-whatsup.png)
+```
+static int whats_up(int argc, char **argv) {
+    (void)argc;
+    (void)argv;
+
+    printf("The roof!\n");
+    return 0;
+}
+```
 
 Des weiteren muss die Funktion in einem Array eingetragen und dieses Array als Quelle für Shell-befehle in der `main` Funktion registriert werden.
 
-![Shell Kommando Registeriren](./images/1_2_3-register.png)
+```
+const shell_command_t shell_commands[] = {
+    {"whats_up", "prints the roof", whats_up},
+    { NULL, NULL, NULL}
+};
+```
+
+```
+shell_run(shell_commands, line_buf, SHELL_DEFAULT_BUFSIZE);
+```
 
 Nun kann mithilfe des `make`-Kommandos ein build gestartet werden und die resultierende Binary mit dem Namen **First_test.elf** ausgeführt werden.
 In der RIOT Shell kann nun der Befehl `whats_up` ausgeführt werden.
 
 ![whats_up Befehl in RIOT shell](./images/1_2_3-function.png)
 
-### Simple Network communication
+### Einfache Netzwerk Kommunikation
 Das Ziel dieser Challenge war, zwei RIOT-OS Instanzen über Netzwerk kommunizieren zu lassen.
 
 Das im RIOT Repo mitgelieferte Script `tapsetup` kann genutzt werden um in der Linux Umgebung zwei interfaces (tap0 und tap1) anzulegen.
@@ -63,9 +90,12 @@ Wird nun eine RIOT-OS Instanz mit dem Zusatz `PORT=tap0` ist das INterface tap0 
 
 Nun kann mit Hilfe des Befehls `txtsnd 4 C2:B5:35:A8:66:FE hello` eine Nachricht an ein anderes Interface gesendet werden.
 Der Befehl beinhaltet:
-1. Die Interface Nummer auf der gesendet werden soll
-2. Die Hardware Adresse des Ziels 
-3. Die Nachricht
+
+   1. Die Interface Nummer auf der gesendet werden soll
+
+   2. Die Hardware Adresse des Ziels 
+
+   3. Die Nachricht
 
 Auf dem zweiten Instanz kann kann die gesendete Nachricht nun in Hexadezimaler Form empfangen werden.
 
@@ -88,6 +118,43 @@ Die Funktion `echo()` aus dem Tutorial Code muss um die Zeile ` printf("%s", arg
 ![Ausgabe des Ersten Arguments](./images/2_1_1-echo.png)
 
 ### Task 03
+
+Zum erstellen eines Threads muss die Multithreading library importiert und ein Array als Stack für den Thread erstellt werden.
+
+```
+...
+#include "thread.h"
+
+char rcv_thread_stack[THREAD_STACKSIZE_MAIN];
+...
+```
+
+Jetzt kann mit `thread_create()` ein neuer Thread erstellt werden. Die Parameter enthalten eine Referenz auf den Stack und die Funktion die aufgerufen werden soll,, diese wurde im Tutorial Code vorgegeben.
+
+![Ausgabe des Threads](./images/2_1_1-thread_run.png)
+
+### Task 04
+
+Um Timer in RIOT-OS Nutzen zu Können muss im Makefile das Modul **xtimer** importiert werden: `USEMODULE += xtimer`
+
+In einem Thread wird nun mit `xtimer_now_usec()` die aktuelle Systemzeit in Millisekunden Ausgegeben und dann mit `xtimer_sleep(2)` zwei Sekunden geschlafen.
+
+```
+...
+void *system_time(void *arg)
+{
+    int time = 0;
+    while(true){
+        time = xtimer_now_usec();
+        printf("%d \n",time);
+        xtimer_sleep(2);
+    }
+
+    (void)arg;
+    return NULL;
+}
+...
+```
 
 ## Challenge 2
 Lorem Ipsum
