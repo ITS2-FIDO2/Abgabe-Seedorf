@@ -87,7 +87,7 @@ Für die Generierung eines cipher textes c1 Im CBC Mode wird der Plaintext mit d
 
 Im main code wird nun zunächst ein Schlüssel, die message (plaintext) und cipher initialisiert. Anschließend folgen buffer Initialisierungen für input, output und decrypt. 
 
-Die IV ist eine zufällige, 16Byte große Zahl. Hier ist ein Verweis, dass man im productive mode einen kryptographischen Random Number Generator benutzen sollte, da die IV für jeden cipher text einzigartig sein muss. 
+Die IV ist eine zufällige, 16 byte große Zahl. Hier ist ein Verweis, dass man im productive mode einen kryptographischen Random Number Generator benutzen sollte, da die IV für jeden cipher text einzigartig sein muss. 
 
 Nun werden die encrypt_cbc und decrypt_cbc Methoden aufgerufen.
 
