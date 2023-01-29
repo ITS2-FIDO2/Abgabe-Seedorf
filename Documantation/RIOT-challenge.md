@@ -90,6 +90,22 @@ Die Funktion `echo()` aus dem Tutorial Code muss um die Zeile ` printf("%s", arg
 
 ### Task 03
 
+Zum erstellen eines Threads muss die Multithreading library importiert und ein Array als Stack für den Thread erstellt werden.
+
+```
+...
+#include "thread.h"
+
+char rcv_thread_stack[THREAD_STACKSIZE_MAIN];
+...
+```
+
+Jetzt kann mit `thread_create()` ein neuer Thread erstellt werden. Die Parameter enthalten eine Referenz auf den Stack und die Funktion die aufgerufen werden soll,, diese wurde im Tutorial Code vorgegeben.
+
+![Ausgabe des Threads](./images/2_1_1-thread_run.png)
+
+### Task 04
+
 
 
 
