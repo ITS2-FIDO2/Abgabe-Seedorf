@@ -1,0 +1,125 @@
+WORDLENGTH: 65536 BYTES
+KEY SIZE: 16 BYTES
+
+ELECTRONIC CODEBOOK
+Average of encrypt: 0.369ms
+Average of decrypt: 0.429ms
+STD of decrypt: 0.5146251062666881
+STD of decrypt: 0.5088801430592473
+
+CIPHER BLOCKER CHAINING
+Average of encrypt: 571.161ms
+Average of decrypt: 1020.649ms
+STD of decrypt: 118.61261770570617
+STD of decrypt: 234.0835829335325
+
+COUNTER
+Average of encrypt: 539.782ms
+Average of decrypt: 540.123ms
+STD of decrypt: 74.25280113234787
+STD of decrypt: 73.20098271881328
+
+WORDLENGTH: 2048 BYTES
+KEY SIZE: 16 BYTES
+
+ELECTRONIC CODEBOOK
+Average of encrypt: 0.378ms
+Average of decrypt: 0.538ms
+STD of decrypt: 0.6269896330881397
+STD of decrypt: 0.5084840213812033
+
+CIPHER BLOCKER CHAINING
+Average of encrypt: 19.458ms
+Average of decrypt: 34.012ms
+STD of decrypt: 4.739434143439489
+STD of decrypt: 8.194501571175637
+
+COUNTER
+Average of encrypt: 18.185ms
+Average of decrypt: 18.166ms
+STD of decrypt: 4.254030441828079
+STD of decrypt: 4.305629338435904
+
+WORDLENGTH: 131072 BYTES
+KEY SIZE: 16 BYTES
+
+ELECTRONIC CODEBOOK
+Average of encrypt: 0.366ms
+Average of decrypt: 0.406ms
+STD of decrypt: 0.5366973076138915
+STD of decrypt: 0.5129951266825057
+
+CIPHER BLOCKER CHAINING
+Average of encrypt: 1081.126ms
+Average of decrypt: 1917.892ms
+STD of decrypt: 131.66310084454187
+STD of decrypt: 215.38606346743978
+
+COUNTER
+Average of encrypt: 1072.165ms
+Average of decrypt: 1070.132ms
+STD of decrypt: 165.77024393720365
+STD of decrypt: 150.28584955344266
+
+WORDLENGTH: 2048 BYTES
+KEY SIZE: 24 BYTES
+
+ELECTRONIC CODEBOOK
+Average of encrypt: 0.562ms
+Average of decrypt: 0.942ms
+STD of decrypt: 0.5100548990059796
+STD of decrypt: 0.6423674960643635
+
+CIPHER BLOCKER CHAINING
+Average of encrypt: 21.903ms
+Average of decrypt: 41.311ms
+STD of decrypt: 7.556824134515769
+STD of decrypt: 12.17219285913594
+
+COUNTER
+Average of encrypt: 18.677ms
+Average of decrypt: 18.365ms
+STD of decrypt: 4.5771902953667984
+STD of decrypt: 4.093137549606658
+
+WORDLENGTH: 65536 BYTES
+KEY SIZE: 24 BYTES
+
+ELECTRONIC CODEBOOK
+Average of encrypt: 0.4ms
+Average of decrypt: 0.469ms
+STD of decrypt: 0.5253570214625479
+STD of decrypt: 0.5282414220789581
+
+CIPHER BLOCKER CHAINING
+Average of encrypt: 601.142ms
+Average of decrypt: 1131.853ms
+STD of decrypt: 106.06916534035703
+STD of decrypt: 202.32675895936256
+
+COUNTER
+Average of encrypt: 628.929ms
+Average of decrypt: 635.966ms
+STD of decrypt: 127.6363504609874
+STD of decrypt: 136.0587404175123
+
+WORDLENGTH: 131072 BYTES
+KEY SIZE: 24 BYTES
+
+ELECTRONIC CODEBOOK
+Average of encrypt: 0.361ms
+Average of decrypt: 0.429ms
+STD of decrypt: 0.5105673315048662
+STD of decrypt: 0.5147416827885615
+
+CIPHER BLOCKER CHAINING
+Average of encrypt: 1120.038ms
+Average of decrypt: 2109.778ms
+STD of decrypt: 101.60647890759722
+STD of decrypt: 156.87397080459203
+
+COUNTER
+Average of encrypt: 1121.679ms
+Average of decrypt: 1128.107ms
+STD of decrypt: 126.04565029781868
+STD of decrypt: 134.16079737017068
