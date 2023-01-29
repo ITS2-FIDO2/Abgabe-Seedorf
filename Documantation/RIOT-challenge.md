@@ -157,7 +157,7 @@ void *system_time(void *arg)
 ```
 
 ## Challenge 2
-Lorem Ipsum
+In Chapter_2_Crypto wurden die beiden AES modes ECB und CBC erfolgreich kompiliert und eine Test message verschlüsselt und entschlüsselt. Dafür wurde der BASE_PFAD im Makefile angepasst und in der main() je der CIPHER_AES_128 zu CIPHER_AES geändert und den `include shell_commands` entfernt, da sie deprecated sind.
 
 ## Challenge 3
 
