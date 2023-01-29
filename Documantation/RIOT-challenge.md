@@ -62,11 +62,15 @@ Wird nun eine RIOT-OS Instanz mit dem Zusatz `PORT=tap0` ist das INterface tap0 
 
 ![tap1 in RIOT-OS](./images/1_2_4-connecttotap.png)
 
-Nun kann mit Hilfe des Befehls `txtsnd 4 32:7E:98:37:38:94 hello` eine Nachricht an ein anderes Interface gesendet werden.
+Nun kann mit Hilfe des Befehls `txtsnd 4 C2:B5:35:A8:66:FE hello` eine Nachricht an ein anderes Interface gesendet werden.
 Der Befehl beinhaltet:
 1. Die Interface Nummer auf der gesendet werden soll
 2. Die Hardware Adresse des Ziels 
 3. Die Nachricht
+
+Auf dem zweiten Instanz kann kann die gesendete Nachricht nun in Hexadezimaler Form empfangen werden.
+
+![Empfangene Nachricht](./images/1_2_4-recioevedMessage.png)
 
 
 # Woche 2
@@ -77,12 +81,16 @@ Das Ziel ist die ersten vier Tutorials von RIOT durchzuarbeiten
 ### Task 01
 Einfügen der Code-Zeile `printf("This application runs on %s\n", RIOT_BOARD);` gibt den Hardware Typ aud für den RIOT Kompiliert wurde.
 
+![Ausgabe der neuen codezeile](./images/2_1_1-welcomeBoard.png)
+
+### Task 02
+Die Funktion `echo()` aus dem Tutorial Code muss um die Zeile ` printf("%s", argv[1]);` erweitert werden, um das erste Argument der Funktion zu auszugeben.
+
+![Ausgabe des Ersten Arguments](./images/2_1_1-echo.png)
+
 ## Challenge 2
-Lorem Ipsum
 
 ## Challenge 3
 
 ### Review AES-CBC
 Im AES-CBC
-
-![AES CBC Mode](./images/2_3_1-AES_CBC_encryption.svg)

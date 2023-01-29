@@ -1,11 +1,11 @@
 # name of your application
-APPLICATION = First_test
+APPLICATION = RIOT_TUTORIALS
 
 # If no BOARD is found in the environment, use this default:
 BOARD ?= native
 
 # This has to be the absolute path to the RIOT base directory:
-RIOTBASE ?= $(CURDIR)/../../../RIOT/
+RIOTBASE ?= $(CURDIR)/../../../../RIOT/
 
 # Uncomment these lines if you want to use platform support from external
 # repositories:

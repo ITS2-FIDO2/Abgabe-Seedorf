@@ -33,16 +33,18 @@
 #include "net/gnrc.h"
 #endif
 
-static int whats_up(int argc, char **argv) {
+static int echo(int argc, char **argv){
     (void)argc;
     (void)argv;
-
-    printf("The roof!\n");
+    
+    printf("%s", argv[1]);
+    printf("\n");
     return 0;
 }
 
+
 const shell_command_t shell_commands[] = {
-    {"whats_up", "prints the roof", whats_up},
+    {"echo", "Print the firs Argument" , echo},
     { NULL, NULL, NULL}
 };
 
@@ -55,6 +57,7 @@ int main(void)
 #endif
 
     (void) puts("Welcome to RIOT!");
+    printf("This application runs on %s\n", RIOT_BOARD);
 
     char line_buf[SHELL_DEFAULT_BUFSIZE];
     shell_run(shell_commands, line_buf, SHELL_DEFAULT_BUFSIZE);
