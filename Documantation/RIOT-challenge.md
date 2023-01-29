@@ -82,6 +82,7 @@ Lorem Ipsum
 Unter Chapter_2_Crypto befindet sich die Dokumentation zu 05_AES_CBC_en.md. Zu Beginn werden die Module cipher_modes (Für die verschiedenen AES cipher modes) und random (zur Generierung der IV) zum makefile hinzugefügt. Anschließend werden die zwei header Dateien für die Verschlüsselungs- und Entschlüsselungsmethoden vom CBC Mode hinzugefügt.
 
 ![AES CBC Mode](./images/2_3_1-AES_CBC_encryption.png)
+
 Für die Generierung eines cipher textes c1 Im CBC Mode wird der Plaintext mit der IV xor verknüpft und anschließend mit dem key verschlüsselt. Die IV ist dabei zufällig. Für den nächsten cipher text c2, dient c1 als IV.
 
 Im main code wird nun zunächst ein Schlüssel, die message (plaintext) und cipher initialisiert. Anschließend folgen buffer Initialisierungen für input, output und decrypt. 
@@ -92,6 +93,7 @@ Nun werden die encrypt_cbc und decrypt_cbc Methoden aufgerufen.
 
 ### Additional Block Cipher Mode: CTR 
 In diesem Abschnitt wird der Code der obigen Review (AES CBC) zu AES_CTR abgeändert.
+
 ![AES CTR Mode](./images/2_3_1-AES_CTR_encryption.png)
 
 Dafür definieren wir die folgenden Begriffe:
