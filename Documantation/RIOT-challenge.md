@@ -2,7 +2,7 @@
 title: "Aktuelle Themen der IT-Sicherheit: RIOT Challenges"
 subtitle: "WS 22/23: Prof. Dr. Jan Seedorf"  
 author: [Thomas Jakkel (1001594), Severin Nonenmann (1001599), Lukas Reinke (1001213) , Lars Weiß (1001596)]
-date: "29. Januar 2023"
+date: "31. Januar 2023"
 keywords: [Markdown, Example]
 lang: "de"
 titlepage: true
@@ -13,8 +13,8 @@ toc-title: "Inhalt"
 toc-own-page: true
 footer-left: "WS 22/23: Prof. Dr. Jan Seedorf"
 ---
-
-Der in dieser Abgabe verwendete code kann auf GitHub eingesehen werden: [https://github.com/ITS2-FIDO2/Abgabe-Seedorf](https://github.com/ITS2-FIDO2/Abgabe-Seedorf)
+# Bemerkung
+Der für diese Abgabe geschriebene Code kann auf GitHub eingesehen werden: [https://github.com/ITS2-FIDO2/Abgabe-Seedorf](https://github.com/ITS2-FIDO2/Abgabe-Seedorf)
 
 # Woche 1
 
@@ -277,9 +277,9 @@ Genau wie in challenge 3 wurde der AES-CBC Algorithmus des Basisprojekts benutzt
 In der main werden dann alle drei Algorithmen nacheinander aufgerufen, um im nächsten Schritt Performance-Tests machen zu können.
 
 ### 4.4 Benchmark Tests
-Mithilfe eines Python Scriptes wurde aus den Ergebnissen des Benchmarking codes für jede Messreihe der Durchnitt und die Standartabweichung für Ver- und Entschlüsselung berechnet:
+Mithilfe eines Python Scriptes wurde aus den Ergebnissen des Benchmarking codes für jede Messreihe der Durchnitt und die Standartabweichung für Ver- und Entschlüsselung berechnet (Abb. 10):
 
-![AES CTR Mode](./images/2_4_3_benchmark-auswertung.png)
+![Auswertung des Benchmarkings](./images/2_4_3_benchmark-auswertung.png)
 
 Aus der Tabelle ist zu erkennen, dass mit drei verschiedenen Größen an Nachrichten (2048-, 2^16- und 2^17-bytes) in Kombination mit drei verschiedenen Schlüsselgrößen (2048-, 2^16-, 2^17-bytes) getestet wurde. Unabhängig dieser Konfiguration, war die durchschnittliche Verschlüsselungslänge beim CBC- und CTR-Algorithmus etwa gleich lange. Interessanterweise unterscheiden sich die Entschlüsselungslängen. Beim CBC-Algorithmus dauerte die Entschlüsselung in allen Fällen fast doppelt so lange wie die Verschlüsselung. Die Entschlüsselung des CTR-Algorithmus dauerte dabei etwa gleich lange wie die Verschlüsselung. 
 
@@ -289,6 +289,5 @@ Die Veränderung der Schlüssellänge von 16- zu 24-bytes verursachte etwa einen
 
 Die Standardabweichung lag meistens bei ~100ms, außer bei der Entschlüsselung des CBC-Algorithmus, dort lag sie bei ~200ms, wobei sich wie oben beschrieben auch die Entschlüsselungsdauer generell verdoppelte.
 
-
-# Woche 4
-Leider gab es zu Beginn des RIOT Projekts Startschwierigkeiten mit der VM. Die Challenges aus Woche 3 haben einen wesentlich größeren Aufwand verursacht, als erwartet. Demnach fehlt uns leider die Zeit das Kapitel 4 abzuschließen. 
+# Woche 3
+Leider gab es zu Beginn des RIOT Projekts Startschwierigkeiten mit der VM. Die Challenges aus Woche 1 und 2 haben einen wesentlich größeren Aufwand verursacht, als erwartet. Demnach fehlt uns leider die Zeit das Kapitel 3 abzuschließen. 
