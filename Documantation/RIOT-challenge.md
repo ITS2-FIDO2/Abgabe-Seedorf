@@ -287,3 +287,7 @@ Bei einer festen Schlüssellänge und der Verdoppelung der zu ver- und entschlü
 Die Veränderung der Schlüssellänge von 16- zu 24-bytes verursachte etwa einen Offset von plus ~90ms auf alle Fälle.
 
 Die Standardabweichung lag meistens bei ~100ms, außer bei der Entschlüsselung des CBC-Algorithmus, dort lag sie bei ~200ms, wobei sich wie oben beschrieben auch die Entschlüsselungsdauer generell verdoppelte.
+
+
+# Woche 4
+Leider gab es zu Beginn des RIOT Projekts Startschwierigkeiten mit der VM. Die Challenges aus Woche 3 haben einen wesentlich größeren Aufwand verursacht, als erwartet. Demnach fehlt uns leider die Zeit das Kapitel 4 abzuschließen. 
