@@ -282,7 +282,7 @@ Mithilfe eines Python Scriptes wurde aus den Ergebnissen des Benchmarking codes 
 
 ![AES CTR Mode](./images/2_4_3_benchmark-auswertung.png)
 
-Aus der Tabelle ist zu erkennen, dass mit drei verschiedenen Größen an Nachrichten (2048-, 2^16- und 2^17-bytes) in Kombination mit drei verschiedenen Schlüsselgrößen (2048-, 2^16-, 2^17-bytes) getestet wurde. Unabhängig dieser KOnfiguration, war die durchschnittliche Verschlüsselungslänge beim CBC- und CTR-Algorithmus etwa gleich lange. Interessanterweise unterscheiden sich die Entschlüsselungslängen. Beim CBC-Algorithmus dauerte die Entschlüsselung in allen Fällen fast doppelt so lange wie die Verschlüsselung. Die Entschlüsselung des CTR-Algorithmus dauerte dabei etwa gleich lange wie die Verschlüsselung. 
+Aus der Tabelle ist zu erkennen, dass mit drei verschiedenen Größen an Nachrichten (2048-, 2^16- und 2^17-bytes) in Kombination mit drei verschiedenen Schlüsselgrößen (2048-, 2^16-, 2^17-bytes) getestet wurde. Unabhängig dieser Konfiguration, war die durchschnittliche Verschlüsselungslänge beim CBC- und CTR-Algorithmus etwa gleich lange. Interessanterweise unterscheiden sich die Entschlüsselungslängen. Beim CBC-Algorithmus dauerte die Entschlüsselung in allen Fällen fast doppelt so lange wie die Verschlüsselung. Die Entschlüsselung des CTR-Algorithmus dauerte dabei etwa gleich lange wie die Verschlüsselung. 
 
 Bei einer festen Schlüssellänge und der Verdoppelung der zu ver- und entschlüsselnden Nachrichtenlänge von 2^16 zu 2^17, stieg die Zeit in beiden Algorithmen (CBC, CTR) äquivalent an, also verdoppelte sich ebenso. DIe Standardabweichung veränderte sich dabei schwankend gering.
 
