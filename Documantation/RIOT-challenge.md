@@ -217,7 +217,6 @@ Entsprechend werden folgende Zeilen des CBC-Codes für die main abgeändert:
 
     uint8_t counter[8] = 1; // IMPORTANT: In productive environment, use a cryptographically secure RNG!
 
-    //Concat
     uint8_t* counter_block[16] = {0};
     memcpy(counter_block, nonce, 8);
     memcpy(counter_block + 8, counter, 8);
